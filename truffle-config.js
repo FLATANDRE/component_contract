@@ -41,10 +41,10 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
-// const { MNEMONIC, PROJECT_ID } = process.env;
+require('dotenv').config();
+const { MNEMONIC } = process.env;
 
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
+const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
   /**
@@ -64,11 +64,16 @@ module.exports = {
     // tab if you use this network and you must also set the `host`, `port` and `network_id`
     // options below to some value.
     //
-    // development: {
-    //  host: "127.0.0.1",     // Localhost (default: none)
-    //  port: 8545,            // Standard Ethereum port (default: none)
-    //  network_id: "*",       // Any network (default: none)
-    // },
+    development: {
+      host: "localhost",     // Localhost (default: none)
+      //port: 8545,            // Standard Ethereum port (default: none)
+      port: 7545,            // Standard Ethereum port (default: none)
+      network_id: "*",       // Any network (default: none)
+      //gas: "0x1ffffffffffffe",           // Gas sent with each transaction (default: ~6700000)
+      gas: "0x6691b7",           // Gas sent with each transaction (default: ~6700000)
+      gasPrice: 0,  // 20 gwei (in wei) (default: 100 gwei)
+      websocket: true         // Enable EventEmitter interface for web3 (default: false)
+    },
     //
     // An additional network, but with some advanced options…
     // advanced: {
@@ -91,11 +96,11 @@ module.exports = {
     // },
     //
     // Useful for private networks
-    // private: {
-    //   provider: () => new HDWalletProvider(MNEMONIC, `https://network.io`),
-    //   network_id: 2111,   // This network is yours, in the cloud.
-    //   production: true    // Treats this network as if it was a public net. (default: false)
-    // }
+    private_dev: {
+       provider: () => new HDWalletProvider(MNEMONIC, `http://192.168.59.100/rpc`),
+       network_id: "*",   // This network is yours, in the cloud.
+       production: false    // Treats this network as if it was a public net. (default: false)
+    }
   },
 
   // Set default mocha options here, use special reporters, etc.
