@@ -18,17 +18,17 @@ contract TestDocumentManagement {
     }
 
     function testDocumentHash() public {
-        string memory hash = docMgmt.getDocumentHash();
+        string memory hash = docMgmt.documentHash();
         Assert.equal(hash,docHash,'Document hash not equal');
     }
 
     function testDocumentName() public {
-        string memory name = docMgmt.getDocumentName();
+        string memory name = docMgmt.documentName();
         Assert.equal(name,docName,'Document name not equal');
     }
 
     function testDocumentOwner() public {
-        address owner = docMgmt.getDocumentOwner();
+        address owner = docMgmt.documentOwner();
         Assert.equal(owner,docOwner,'Document owner not equal');
     }
 

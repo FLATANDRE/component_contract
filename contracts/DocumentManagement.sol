@@ -2,9 +2,9 @@
 pragma solidity ^0.8.19;
 
 contract DocumentManagement {
-    address documentOwner;
-    string documentHash = '';
-    string documentName = '';
+    address public documentOwner;
+    string public documentHash = '';
+    string public documentName = '';
 
     event Stored(address documentOwner, string documentHash);
 
@@ -15,17 +15,5 @@ contract DocumentManagement {
         documentName = name;
         emit Stored(documentOwner, documentHash);
         return true;
-    }
-
-    function getDocumentOwner() public view returns (address) {
-        return documentOwner;
-    }
-
-    function getDocumentHash() public view returns (string memory) {
-        return documentHash;
-    }
-
-    function getDocumentName() public view returns (string memory) {
-        return documentName;
     }
 }

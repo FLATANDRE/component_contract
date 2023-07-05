@@ -41,10 +41,12 @@
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-require('dotenv').config();
-const { MNEMONIC } = process.env;
-
+//require('dotenv').config();
+//const { MNEMONIC } = process.env;
+const MNEMONIC = '8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63';
 const HDWalletProvider = require('@truffle/hdwallet-provider');
+
+console.log(MNEMONIC);
 
 module.exports = {
   /**
@@ -99,7 +101,10 @@ module.exports = {
     private_dev: {
        provider: () => new HDWalletProvider(MNEMONIC, `http://192.168.59.100/rpc`),
        network_id: "*",   // This network is yours, in the cloud.
-       production: false    // Treats this network as if it was a public net. (default: false)
+       production: false,    // Treats this network as if it was a public net. (default: false)
+       gas: "0x6691b7",           // Gas sent with each transaction (default: ~6700000)
+       gasPrice: 0,  // 20 gwei (in wei) (default: 100 gwei)
+       websocket: true         // Enable EventEmitter interface for web3 (default: false)
     }
   },
 
